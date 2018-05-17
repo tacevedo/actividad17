@@ -3,11 +3,13 @@ class Product
     @name = name
     @valores = valores.map(&:to_i)
   end
+
   def promedio
     @valores = @valores.inject(&:+) / @valores.length
   end
+
   def catalogonuevo
-    nuevos = []
+    print @valores
     File.open( "nuevo_catalogo.txt", "a") do |f|
       f.print "#{@name}, "
       @valores.each_with_index do |dato, i|
@@ -21,6 +23,7 @@ class Product
       end
       f.close
     end
+
   end
 end
 

@@ -17,5 +17,4 @@ data.each do |prod|
 end
 
 
-
 puts products_list[0].promedio
