@@ -8,6 +8,24 @@ class Product
   end
 end
 
+def catalogonuevo(catalogo)
+  File.open( "nuevo_catalogo.txt", "w") do |f|
+    catalogo.each do |prod|
+      ls = prod.split(', ')
+      ls.each_with_index do |dato, i|
+        if i != (ls.size - 1)
+           if i != (ls.size - 2)
+             f.print "#{dato}, "
+           else
+             f.print "#{dato}\n"
+           end
+        end
+      end
+    end
+    f.close
+  end
+end
+
 products_list = []
 data = []
 File.open('catalogo.txt', 'r') { |file| data = file.readlines}
@@ -15,6 +33,8 @@ data.each do |prod|
   ls = prod.split(', ')
   products_list << Product.new(ls[0], ls[1], ls[2], ls[3], ls[4])
 end
-
-
+#6
 puts products_list[0].promedio
+
+#7
+catalogonuevo(data)
