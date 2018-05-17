@@ -8,12 +8,19 @@ class Product
   end
   def catalogonuevo
     nuevos = []
-    nuevos = @valores.map do |dato, i|
-      if i != (@valores.size - 1)
-        dato
+    File.open( "nuevo_catalogo.txt", "a") do |f|
+      f.print "#{@name}, "
+      @valores.each_with_index do |dato, i|
+        if i != (@valores.size - 1)
+            if i != (@valores.size - 2)
+              f.print "#{dato}, "
+            else
+              f.print "#{dato}\n"
+            end
+        end
       end
+      f.close
     end
-    puts nuevos
   end
 end
 
@@ -26,4 +33,4 @@ data.each do |prod|
 end
 
 
- puts products_list[0].catalogonuevo
+products_list.map { |e|  e.catalogonuevo}
