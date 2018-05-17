@@ -31,10 +31,10 @@ data = []
 File.open('catalogo.txt', 'r') { |file| data = file.readlines}
 data.each do |prod|
   ls = prod.split(', ')
-  products_list << Product.new(ls[0], ls[1], ls[2], ls[3], ls[4])
+  products_list << Product.new(*ls)
 end
 #6
-puts products_list[0].promedio
+puts products_list[1].promedio
 
 #7
 catalogonuevo(data)
